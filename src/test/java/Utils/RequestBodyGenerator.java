@@ -10,8 +10,6 @@ import org.mockito.Mockito;
 @SuppressWarnings("rawtypes")
 public class RequestBodyGenerator {
 
-	public static String token = Mockito.anyString();
-
 	public static Map geradorRequestMockada() {
 
 		Map<String, Object> reqBase = new HashMap<String, Object>();
@@ -76,7 +74,11 @@ public class RequestBodyGenerator {
 		return req;
 	}
 
-	public static Map gerarObjetoRequest() {
+	public static Map gerarBodyVazio() {
+		return Mockito.anyMap();
+	}
+
+	public static Map gerarObjetoRequestDadosFixos() {
 
 		Map<String, Object> reqBase = new HashMap<String, Object>();
 		reqBase.put("servidor", "localhost");
@@ -92,6 +94,29 @@ public class RequestBodyGenerator {
 		req.put("contasPreservadas", listaContas);
 		req.put("emailContato", "kevin.ferreira@conductor.com.br");
 		req.put("emissor", "BMG");
+		req.put("baseDados", reqBase);
+
+		return req;
+	}
+	
+	public static Map geradorRequestMockadaPorcentagemInvalida() {
+
+		Map<String, Object> reqBase = new HashMap<String, Object>();
+		reqBase.put("servidor", EntityGenericUtil.getString());
+		reqBase.put("base", EntityGenericUtil.getString());
+		reqBase.put("usuario", EntityGenericUtil.getString());
+		reqBase.put("senha", EntityGenericUtil.getString());
+
+		List<Integer> listaContas = new ArrayList<Integer>();
+		listaContas.add(EntityGenericUtil.getInteger());
+		listaContas.add(EntityGenericUtil.getInteger());
+		listaContas.add(EntityGenericUtil.getInteger());
+
+		Map<String, Object> req = new HashMap<String, Object>();
+		req.put("percentualReducaoBase", -200);
+		req.put("contasPreservadas", listaContas);
+		req.put("emailContato", EntityGenericUtil.getStringEmail());
+		req.put("emissor", EntityGenericUtil.getString());
 		req.put("baseDados", reqBase);
 
 		return req;

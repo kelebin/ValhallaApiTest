@@ -16,5 +16,8 @@ import test.ReducaoModoRecuperacao;
      ReducaoModoRecuperacao.class
      })
 public class SuiteClass {
+	  
+   
+	
 
 }
