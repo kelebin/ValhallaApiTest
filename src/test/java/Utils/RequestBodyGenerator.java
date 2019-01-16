@@ -121,5 +121,26 @@ public class RequestBodyGenerator {
 
 		return req;
 	}
+	public static Map geradorRequestMockadaPorcentagemNaoInformada() {
+/*
+		Map<String, Object> reqBase = new HashMap<String, Object>();
+		reqBase.put("servidor", EntityGenericUtil.getString());
+		reqBase.put("base", EntityGenericUtil.getString());
+		reqBase.put("usuario", EntityGenericUtil.getString());
+		reqBase.put("senha", EntityGenericUtil.getString());
 
+		List<Integer> listaContas = new ArrayList<Integer>();
+		listaContas.add(EntityGenericUtil.getInteger());
+		listaContas.add(EntityGenericUtil.getInteger());
+		listaContas.add(EntityGenericUtil.getInteger());*/
+
+		Map<String, Object> req = new HashMap<String, Object>();
+		//req.put("percentualReducaoBase", "");
+		req.put("contasPreservadas", Mockito.anyList());
+		req.put("emailContato", EntityGenericUtil.getStringEmail());
+		req.put("emissor", EntityGenericUtil.getString());
+		req.put("baseDados", Mockito.anyMap());
+
+		return req;
+	}
 }

@@ -3,10 +3,20 @@ package Utils;
 
 public class UrlUtils  {
 
-     public static String urlReducaoNormal = "http://localhost:8080/v2/api-valhalla/reducaoBase/modoNormal" ;
+     public static String urlReducao = "http://localhost:8080/v2/api-valhalla/reducaoBase/" ;
      
-     public static String urlReducaoExtrema = "http://localhost:8080/v2/api-valhalla/reducaoBase/modoExtremo" ;
-     
-     public static String urlReducaoRecuperacao = "http://localhost:8080/v2/api-valhalla/reducaoBase/modoRecuperacao" ;
+   
+	public static String getUrlReducaoNormal() {
+		return urlReducao + "modoNormal";
+	}
+
+	public static String getUrlReducaoExtrema() {
+		return urlReducao + "modoExtremo";
+	}
+
+	public static String getUrlReducaoRecuperacao() {
+		return urlReducao + "modoRecuperacao";
+	}
+
 
 }
