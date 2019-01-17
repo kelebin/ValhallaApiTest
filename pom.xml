@@ -53,11 +53,13 @@
 			<version>1.11</version>
 		</dependency>
 		
+		<!-- https://mvnrepository.com/artifact/com.github.thiagonego/alfred -->
 		<dependency>
-			<groupId>com.github.thiagonego</groupId>
-			<artifactId>alfred</artifactId>
-			<version>1.3.6</version>
+		    <groupId>com.github.thiagonego</groupId>
+		    <artifactId>alfred</artifactId>
+		    <version>1.4.0</version>
 		</dependency>
+
 		<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
