@@ -12,37 +12,37 @@ public class ReducaoModoExtremo {
 	RequestGenerator request = new RequestGenerator();
 
 	@Test
-	public void ReducaoModoNormalTeste() {
+	public void ReducaoModoExtremoTeste() {
 		request.genericRequestPOST(EntityGenericUtil.getToken(), RequestBodyGenerator.geradorRequestMockada(),
 				UrlUtils.getUrlReducaoExtrema(), 200);
 	}
 
 	@Test
-	public void ReducaoModoNormalTestListaVazia() {
+	public void ReducaoModoExtremoTestListaVazia() {
 		request.genericRequestPOST(EntityGenericUtil.getToken(), RequestBodyGenerator.geradorRequestMockadaListaVazia(),
 				UrlUtils.getUrlReducaoExtrema(), 500);
 	}
 
 	@Test
-	public void ReducaoModoNormalTestListaString() {
+	public void ReducaoModoExtremoTestListaString() {
 		request.genericRequestPOST(EntityGenericUtil.getToken(),
 				RequestBodyGenerator.geradorRequestMockadaListaString(), UrlUtils.getUrlReducaoExtrema(), 400);
 	}
 
 	@Test
-	public void ReducaoModoNormalBodyVazio() {
+	public void ReducaoModoExtremoBodyVazio() {
 		request.genericRequestPOST(EntityGenericUtil.getToken(), RequestBodyGenerator.gerarBodyVazio(),
 				UrlUtils.getUrlReducaoExtrema(), 500);
 	}
 
 	@Test
-	public void ReducaoModoNormalPorcentagemInvalida() {
+	public void ReducaoModoExtremoPorcentagemInvalida() {
 		request.genericRequestPOST(EntityGenericUtil.getToken(),
 				RequestBodyGenerator.geradorRequestMockadaPorcentagemInvalida(), UrlUtils.getUrlReducaoExtrema(), 200);
 	}
 	
 	@Test
-	public void ReducaoModoNormalPorcentagemNaoInformada() {
+	public void ReducaoModoExtremoPorcentagemNaoInformada() {
 		request.genericRequestPOST(EntityGenericUtil.getToken(),
 				RequestBodyGenerator.geradorRequestMockadaPorcentagemNaoInformada(), UrlUtils.getUrlReducaoExtrema(), 500);
 	}

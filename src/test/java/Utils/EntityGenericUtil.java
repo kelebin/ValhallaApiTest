@@ -14,7 +14,10 @@ import org.apache.commons.lang3.RandomUtils;
 import org.junit.Ignore;
 import org.mockito.Mockito;
 
-import br.com.twsoftware.alfred.object.Objeto;
+import com.github.thiagonego.alfred.object.Objeto;
+
+
+
 
 @Ignore
 public class EntityGenericUtil {

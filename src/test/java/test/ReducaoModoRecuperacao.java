@@ -13,37 +13,37 @@ public class ReducaoModoRecuperacao {
 
 
 	@Test
-	public void ReducaoModoNormalTeste() {
+	public void ReducaoModoRecuperacaoTeste() {
 		request.genericRequestPOST(EntityGenericUtil.getToken(), RequestBodyGenerator.geradorRequestMockada(),
 				UrlUtils.getUrlReducaoRecuperacao(), 200);
 	}
 
 	@Test
-	public void ReducaoModoNormalTestListaVazia() {
+	public void ReducaoModoRecuperacaoTestListaVazia() {
 		request.genericRequestPOST(EntityGenericUtil.getToken(), RequestBodyGenerator.geradorRequestMockadaListaVazia(),
 				UrlUtils.getUrlReducaoRecuperacao(), 200);
 	}
 
 	@Test
-	public void ReducaoModoNormalTestListaString() {
+	public void ReducaoModoRecuperacaoTestListaString() {
 		request.genericRequestPOST(EntityGenericUtil.getToken(),
-				RequestBodyGenerator.geradorRequestMockadaListaString(), UrlUtils.getUrlReducaoRecuperacao(), 400);
+				RequestBodyGenerator.geradorRequestMockadaListaString(), UrlUtils.getUrlReducaoRecuperacao(), 200);
 	}
 
 	@Test
-	public void ReducaoModoNormalBodyVazio() {
+	public void ReducaoModoRecuperacaoBodyVazio() {
 		request.genericRequestPOST(EntityGenericUtil.getToken(), RequestBodyGenerator.gerarBodyVazio(),
 				UrlUtils.getUrlReducaoRecuperacao(), 500);
 	}
 
 	@Test
-	public void ReducaoModoNormalPorcentagemInvalida() {
+	public void ReducaoModoRecuperacaoPorcentagemInvalida() {
 		request.genericRequestPOST(EntityGenericUtil.getToken(),
 				RequestBodyGenerator.geradorRequestMockadaPorcentagemInvalida(), UrlUtils.getUrlReducaoRecuperacao(), 200);
 	}
 	
 	@Test
-	public void ReducaoModoNormalPorcentagemNaoInformada() {
+	public void ReducaoModoRecuperacaoPorcentagemNaoInformada() {
 		request.genericRequestPOST(EntityGenericUtil.getToken(),
 				RequestBodyGenerator.geradorRequestMockadaPorcentagemNaoInformada(), UrlUtils.getUrlReducaoRecuperacao(), 500);
 	}
