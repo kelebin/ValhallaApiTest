@@ -1,14 +1,16 @@
 package DataBase;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 public class TestMySQL {
+	Propriedade prop;
 
-    @SuppressWarnings("unused")
 	public static void main(String[] args) {
         String sql;
    
-
         String server = "10.60.30.23";
         String port = "1433";               
         String database = "Valhalla";
