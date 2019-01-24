@@ -10,7 +10,7 @@ public class RequestGenerator {
 	  
 	  public static final  String accessToken = "accessToken";
 	
-	  public String genericRequestPOST(String token, Map request,String url, Integer status) {
+	  public String genericRequestPOST(String token, Object object,String url, Integer status) {
 			
 	    	String requestModel = 
 	    			  RestAssured.      
@@ -18,7 +18,7 @@ public class RequestGenerator {
 	    		         	  .header(accessToken, token)
 	    		         	  .relaxedHTTPSValidation()
 	    		              .contentType(ContentType.JSON)
-	    		              .body(request)
+	    		              .body(object)
 	    		         .when()
 	    		              .post(url)
 	    		         .then()

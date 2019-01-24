@@ -13,13 +13,13 @@ public class ReducaoModoExtremo {
 
 	@Test
 	public void ReducaoModoExtremoTeste() {
-		request.genericRequestPOST(EntityGenericUtil.getToken(), RequestBodyGenerator.geradorRequestMockada(),
+		request.genericRequestPOST(EntityGenericUtil.getToken(), RequestBodyGenerator.gerarMassaDados(),
 				UrlUtils.getUrlReducaoExtrema(), 200);
 	}
 
 	@Test
 	public void ReducaoModoExtremoTestListaVazia() {
-		request.genericRequestPOST(EntityGenericUtil.getToken(), RequestBodyGenerator.geradorRequestMockadaListaVazia(),
+		request.genericRequestPOST(EntityGenericUtil.getToken(), RequestBodyGenerator.geradorDadosListaVazia(),
 				UrlUtils.getUrlReducaoExtrema(), 500);
 	}
 

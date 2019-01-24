@@ -34,7 +34,7 @@ public class EntityGenericUtil {
 
 	public static Integer getIntegerBase10() {
 
-		return getInteger(0, 100);
+		return getInteger(1, 99);
 	}
 
 	public static Integer getInteger(Integer start, Integer end) {
@@ -98,16 +98,16 @@ public class EntityGenericUtil {
 	}
 
 	/**
-	 * Método gerador de BigDecimal de acordo com precisão e escala. Se a precisão
-	 * não for informada, a escala é ignorada e é retornado um BigDecimal qualquer
-	 * Se a precisão for informada, mas a escala não for um valor menor que a
-	 * precisão, o valor da escala será a precisão menos uma unidade.
+	 * Mï¿½todo gerador de BigDecimal de acordo com precisï¿½o e escala. Se a precisï¿½o
+	 * nï¿½o for informada, a escala ï¿½ ignorada e ï¿½ retornado um BigDecimal qualquer
+	 * Se a precisï¿½o for informada, mas a escala nï¿½o for um valor menor que a
+	 * precisï¿½o, o valor da escala serï¿½ a precisï¿½o menos uma unidade.
 	 * 
 	 * @param precision
-	 *            Quantidade de algarismos do número
+	 *            Quantidade de algarismos do nï¿½mero
 	 * @param scale
-	 *            Quantidade de algarismos após separador decimal do número
-	 * @return O número BigDecimal gerado
+	 *            Quantidade de algarismos apï¿½s separador decimal do nï¿½mero
+	 * @return O nï¿½mero BigDecimal gerado
 	 */
 	public static BigDecimal getBigDecimal(Integer precision, Integer scale) {
 

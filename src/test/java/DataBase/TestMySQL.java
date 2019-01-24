@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 public class TestMySQL {
-	Propriedade prop;
+	//Propriedade prop;
 
 	public static void main(String[] args) {
         String sql;
@@ -32,7 +32,7 @@ public class TestMySQL {
             Statement stmt = con.createStatement();
 
             // Exemplo: navegando e exibindo os dados
-            sql = "SELECT * FROM baseDados WHERE base = 'BMG' ";
+            sql = "SELECT TOP 10 * FROM baseDados  ";
 
             // Executa-se a consulta dos campos 
             ResultSet res = stmt.executeQuery(sql);
@@ -47,7 +47,7 @@ public class TestMySQL {
             	baseDados = res.getString("Base");
             	servidor = res.getString("servidor");
             	usuario = res.getString("usuario");
-                System.out.println("ROW = " +  idBaseDados + " - "+ baseDados + " - "+ servidor  +" - "+ usuario);
+                System.out.println(  idBaseDados + " - "+ baseDados + " - "+ servidor  +" - "+ usuario);
             }
 
             con.close();

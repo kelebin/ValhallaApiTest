@@ -12,13 +12,13 @@ public class ReducaoModoNormal extends UrlUtils {
 
 	@Test
 	public void ReducaoModoNormalTeste() {
-		request.genericRequestPOST(EntityGenericUtil.getToken(), RequestBodyGenerator.geradorRequestMockada(),
+		request.genericRequestPOST(EntityGenericUtil.getToken(), RequestBodyGenerator.gerarMassaDados(),
 				UrlUtils.getUrlReducaoNormal(), 200);
 	}
 
 	@Test
 	public void ReducaoModoNormalTestListaVazia() {
-		request.genericRequestPOST(EntityGenericUtil.getToken(), RequestBodyGenerator.geradorRequestMockadaListaVazia(),
+		request.genericRequestPOST(EntityGenericUtil.getToken(), RequestBodyGenerator.geradorDadosListaVazia(),
 				UrlUtils.getUrlReducaoNormal(), 200);
 	}
 

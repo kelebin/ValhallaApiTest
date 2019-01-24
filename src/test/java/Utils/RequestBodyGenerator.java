@@ -10,102 +10,74 @@ import org.mockito.Mockito;
 @SuppressWarnings("rawtypes")
 public class RequestBodyGenerator {
 
-	public static Map geradorRequestMockada() {
 
+	
+	
+	public static Map gerarDadosServidor() {
 		Map<String, Object> reqBase = new HashMap<String, Object>();
-		reqBase.put("servidor", EntityGenericUtil.getString());
-		reqBase.put("base", EntityGenericUtil.getString());
-		reqBase.put("usuario", EntityGenericUtil.getString());
-		reqBase.put("senha", EntityGenericUtil.getString());
+		reqBase.put("servidor", "10.60.30.23");
+		reqBase.put("base", "Valhalla");
+		reqBase.put("usuario", "UserValhalla");
+		reqBase.put("senha", "UserValhalla");
+		return reqBase;
+	}
 
+	public static List gerarListaContas() {
 		List<Integer> listaContas = new ArrayList<Integer>();
 		listaContas.add(EntityGenericUtil.getInteger());
 		listaContas.add(EntityGenericUtil.getInteger());
 		listaContas.add(EntityGenericUtil.getInteger());
-
-		Map<String, Object> req = new HashMap<String, Object>();
-		req.put("percentualReducaoBase", EntityGenericUtil.getIntegerBase10());
-		req.put("contasPreservadas", listaContas);
-		req.put("emailContato", EntityGenericUtil.getStringEmail());
-		req.put("emissor", EntityGenericUtil.getString());
-		req.put("baseDados", reqBase);
-
-		return req;
+		return listaContas;
 	}
 
-	public static Map geradorRequestMockadaListaVazia() {
-
-		Map<String, Object> reqBase = new HashMap<String, Object>();
-		reqBase.put("servidor", EntityGenericUtil.getString());
-		reqBase.put("base", EntityGenericUtil.getString());
-		reqBase.put("usuario", EntityGenericUtil.getString());
-		reqBase.put("senha", EntityGenericUtil.getString());
-
-		Map<String, Object> req = new HashMap<String, Object>();
-		req.put("percentualReducaoBase", EntityGenericUtil.getIntegerBase10());
-		req.put("contasPreservadas", Mockito.anyList());
-		req.put("emailContato", EntityGenericUtil.getStringEmail());
-		req.put("emissor", EntityGenericUtil.getString());
-		req.put("baseDados", reqBase);
-
-		return req;
+	public static List gerarListaVazia() {
+		List<Integer> listaContas = new ArrayList<Integer>();
+		return listaContas;
 	}
 
-	public static Map geradorRequestMockadaListaString() {
-
-		Map<String, Object> reqBase = new HashMap<String, Object>();
-		reqBase.put("servidor", EntityGenericUtil.getString());
-		reqBase.put("base", EntityGenericUtil.getString());
-		reqBase.put("usuario", EntityGenericUtil.getString());
-		reqBase.put("senha", EntityGenericUtil.getString());
-
+	public static List gerarListaString() {
 		List<String> listaContas = new ArrayList<String>();
 		listaContas.add(EntityGenericUtil.getString());
 		listaContas.add(EntityGenericUtil.getString());
 		listaContas.add(EntityGenericUtil.getString());
+		return listaContas;
+	}
 
+	public static Map gerarMassaDeDados(Map mapa, List lista) {
 		Map<String, Object> req = new HashMap<String, Object>();
 		req.put("percentualReducaoBase", EntityGenericUtil.getIntegerBase10());
-		req.put("contasPreservadas", listaContas);
+		req.put("contasPreservadas", lista);
 		req.put("emailContato", EntityGenericUtil.getStringEmail());
 		req.put("emissor", EntityGenericUtil.getString());
-		req.put("baseDados", reqBase);
-
+		req.put("baseDados", mapa);
 		return req;
+	}
+
+	public static Object gerarMassaDados() {
+		return gerarMassaDeDados(gerarDadosServidor(), gerarListaContas());
+	}
+
+	public static Map geradorDadosListaVazia() {
+		return gerarMassaDeDados(gerarDadosServidor(), gerarListaVazia());
+	}
+
+	public static Map geradorRequestMockadaListaString() {
+		return gerarMassaDeDados(gerarDadosServidor(), gerarListaString());
 	}
 
 	public static Map gerarBodyVazio() {
 		return Mockito.anyMap();
 	}
 
-	public static Map gerarObjetoRequestDadosFixos() {
 
-		Map<String, Object> reqBase = new HashMap<String, Object>();
-		reqBase.put("servidor", "localhost");
-		reqBase.put("base", "BMG");
-		reqBase.put("usuario", "Kevin");
-		reqBase.put("senha", "1234");
 
-		List<Integer> listaContas = new ArrayList<Integer>();
-		listaContas.add(123);
-
-		Map<String, Object> req = new HashMap<String, Object>();
-		req.put("percentualReducaoBase", 50);
-		req.put("contasPreservadas", listaContas);
-		req.put("emailContato", "kevin.ferreira@conductor.com.br");
-		req.put("emissor", "BMG");
-		req.put("baseDados", reqBase);
-
-		return req;
-	}
-	
 	public static Map geradorRequestMockadaPorcentagemInvalida() {
 
 		Map<String, Object> reqBase = new HashMap<String, Object>();
-		reqBase.put("servidor", EntityGenericUtil.getString());
-		reqBase.put("base", EntityGenericUtil.getString());
-		reqBase.put("usuario", EntityGenericUtil.getString());
-		reqBase.put("senha", EntityGenericUtil.getString());
+		reqBase.put("servidor", "10.60.30.23");
+		reqBase.put("base", "Valhalla");
+		reqBase.put("usuario", "UserValhalla");
+		reqBase.put("senha", "UserValhalla");
 
 		List<Integer> listaContas = new ArrayList<Integer>();
 		listaContas.add(EntityGenericUtil.getInteger());
@@ -121,6 +93,7 @@ public class RequestBodyGenerator {
 
 		return req;
 	}
+
 	public static Map geradorRequestMockadaPorcentagemNaoInformada() {
 
 		Map<String, Object> req = new HashMap<String, Object>();
@@ -128,6 +101,14 @@ public class RequestBodyGenerator {
 		req.put("emailContato", EntityGenericUtil.getStringEmail());
 		req.put("emissor", EntityGenericUtil.getString());
 		req.put("baseDados", Mockito.anyMap());
+
+		return req;
+	}
+
+	public static Map gerarRequestMockado() {
+
+		Map<String, Object> req = new HashMap<String, Object>();
+		req.put("key", Mockito.anyInt());
 
 		return req;
 	}

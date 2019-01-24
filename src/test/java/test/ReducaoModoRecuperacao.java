@@ -14,13 +14,13 @@ public class ReducaoModoRecuperacao {
 
 	@Test
 	public void ReducaoModoRecuperacaoTeste() {
-		request.genericRequestPOST(EntityGenericUtil.getToken(), RequestBodyGenerator.geradorRequestMockada(),
+		request.genericRequestPOST(EntityGenericUtil.getToken(), RequestBodyGenerator.gerarMassaDados(),
 				UrlUtils.getUrlReducaoRecuperacao(), 200);
 	}
 
 	@Test
 	public void ReducaoModoRecuperacaoTestListaVazia() {
-		request.genericRequestPOST(EntityGenericUtil.getToken(), RequestBodyGenerator.geradorRequestMockadaListaVazia(),
+		request.genericRequestPOST(EntityGenericUtil.getToken(), RequestBodyGenerator.geradorDadosListaVazia(),
 				UrlUtils.getUrlReducaoRecuperacao(), 200);
 	}
 
