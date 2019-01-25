@@ -1,20 +1,28 @@
 package test;
 
+import static org.junit.Assert.assertTrue;
+
 import org.junit.Test;
 
 import Utils.EntityGenericUtil;
 import Utils.RequestBodyGenerator;
 import Utils.RequestGenerator;
 import Utils.UrlUtils;
+import io.restassured.response.Response;
+import validacao.validador;
 
 public class ReducaoModoExtremo {
 
 	RequestGenerator request = new RequestGenerator();
+	
+	public validador validador = new validador();
 
 	@Test
 	public void ReducaoModoExtremoTeste() {
+		Response response = 
 		request.genericRequestPOST(EntityGenericUtil.getToken(), RequestBodyGenerator.gerarMassaDados(),
 				UrlUtils.getUrlReducaoExtrema(), 200);
+		assertTrue(validador.validarBodyRequest(response));
 	}
 
 	@Test
@@ -38,12 +46,12 @@ public class ReducaoModoExtremo {
 	@Test
 	public void ReducaoModoExtremoPorcentagemInvalida() {
 		request.genericRequestPOST(EntityGenericUtil.getToken(),
-				RequestBodyGenerator.geradorRequestMockadaPorcentagemInvalida(), UrlUtils.getUrlReducaoExtrema(), 200);
+				RequestBodyGenerator.geradorRequestMockadaPorcentagemInvalida(), UrlUtils.getUrlReducaoExtrema(), 400);
 	}
 	
 	@Test
 	public void ReducaoModoExtremoPorcentagemNaoInformada() {
 		request.genericRequestPOST(EntityGenericUtil.getToken(),
-				RequestBodyGenerator.geradorRequestMockadaPorcentagemNaoInformada(), UrlUtils.getUrlReducaoExtrema(), 500);
+				RequestBodyGenerator.geradorRequestMockadaPorcentagemNaoInformada(), UrlUtils.getUrlReducaoExtrema(), 400);
 	}
 }

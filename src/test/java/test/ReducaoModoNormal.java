@@ -1,25 +1,33 @@
 package test;
 
+import static org.junit.Assert.assertTrue;
+
 import org.junit.Test;
 
 import Utils.EntityGenericUtil;
 import Utils.RequestBodyGenerator;
 import Utils.RequestGenerator;
 import Utils.UrlUtils;
+import io.restassured.response.Response;
+import validacao.validador;
 
 public class ReducaoModoNormal extends UrlUtils {
-	RequestGenerator request = new RequestGenerator();
+	public RequestGenerator request = new RequestGenerator();
+
+	public validador validador = new validador();
 
 	@Test
 	public void ReducaoModoNormalTeste() {
-		request.genericRequestPOST(EntityGenericUtil.getToken(), RequestBodyGenerator.gerarMassaDados(),
-				UrlUtils.getUrlReducaoNormal(), 200);
+		Response response = request.genericRequestPOST(EntityGenericUtil.getToken(),
+				RequestBodyGenerator.gerarMassaDados(), UrlUtils.getUrlReducaoNormal(), 200);
+		assertTrue(validador.validarBodyRequest(response));
 	}
 
 	@Test
 	public void ReducaoModoNormalTestListaVazia() {
-		request.genericRequestPOST(EntityGenericUtil.getToken(), RequestBodyGenerator.geradorDadosListaVazia(),
-				UrlUtils.getUrlReducaoNormal(), 200);
+		Response response = request.genericRequestPOST(EntityGenericUtil.getToken(),
+				RequestBodyGenerator.geradorDadosListaVazia(), UrlUtils.getUrlReducaoNormal(), 200);
+		assertTrue(validador.validarBodyRequest(response));
 	}
 
 	@Test
@@ -37,6 +45,7 @@ public class ReducaoModoNormal extends UrlUtils {
 	@Test
 	public void ReducaoModoNormalPorcentagemInvalida() {
 		request.genericRequestPOST(EntityGenericUtil.getToken(),
-				RequestBodyGenerator.geradorRequestMockadaPorcentagemInvalida(), UrlUtils.getUrlReducaoNormal(), 500);
+				RequestBodyGenerator.geradorRequestMockadaPorcentagemInvalida(), UrlUtils.getUrlReducaoNormal(), 400);
 	}
+
 }
