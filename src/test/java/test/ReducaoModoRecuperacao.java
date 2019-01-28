@@ -2,6 +2,8 @@ package test;
 
 import static org.junit.Assert.assertTrue;
 
+import java.sql.SQLException;
+
 import org.junit.Test;
 
 import Utils.EntityGenericUtil;
@@ -19,46 +21,78 @@ public class ReducaoModoRecuperacao {
 
 	@Test
 	public void ReducaoModoRecuperacaoTeste() {
-		Response response = request.genericRequestPOST(EntityGenericUtil.getToken(),
-				RequestBodyGenerator.gerarMassaDados(), UrlUtils.getUrlReducaoRecuperacao(), 200);
-		assertTrue(validador.validarBodyRequest(response));
+
+		try {
+			Response response = request.genericRequestPOST(EntityGenericUtil.getToken(),
+					RequestBodyGenerator.gerarMassaDados(), UrlUtils.getUrlReducaoRecuperacao(), 200);
+			assertTrue(validador.validarBodyRequest(response));
+			validador.validarDadosBanco(response);
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Test
 	public void ReducaoModoRecuperacaoTestListaVazia() {
-		Response response = request.genericRequestPOST(EntityGenericUtil.getToken(),
-				RequestBodyGenerator.geradorDadosListaVazia(), UrlUtils.getUrlReducaoRecuperacao(), 200);
-		assertTrue(validador.validarBodyRequest(response));
+
+		try {
+			Response response = request.genericRequestPOST(EntityGenericUtil.getToken(),
+					RequestBodyGenerator.geradorDadosListaVazia(), UrlUtils.getUrlReducaoRecuperacao(), 200);
+			assertTrue(validador.validarBodyRequest(response));
+			validador.validarDadosBanco(response);
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Test
 	public void ReducaoModoRecuperacaoTestListaString() {
-		Response response = request.genericRequestPOST(EntityGenericUtil.getToken(),
-				RequestBodyGenerator.geradorRequestMockadaListaString(), UrlUtils.getUrlReducaoRecuperacao(), 200);
-		assertTrue(validador.validarBodyRequest(response));
+
+		try {
+			Response response = request.genericRequestPOST(EntityGenericUtil.getToken(),
+					RequestBodyGenerator.geradorRequestMockadaListaString(), UrlUtils.getUrlReducaoRecuperacao(), 200);
+			assertTrue(validador.validarBodyRequest(response));
+			validador.validarDadosBanco(response);
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Test
 	public void ReducaoModoRecuperacaoBodyVazio() {
 		request.genericRequestPOST(EntityGenericUtil.getToken(), RequestBodyGenerator.gerarBodyVazio(),
-				UrlUtils.getUrlReducaoRecuperacao(), 500);
+				UrlUtils.getUrlReducaoRecuperacao(), 400);
 	}
 
 	@Test
 	public void ReducaoModoRecuperacaoPorcentagemInvalida() {
-		Response response = 
-		request.genericRequestPOST(EntityGenericUtil.getToken(),
-				RequestBodyGenerator.geradorRequestMockadaPorcentagemInvalida(), UrlUtils.getUrlReducaoRecuperacao(),
-				200);
-		assertTrue(validador.validarBodyRequest(response));
+
+		try {
+			Response response = request.genericRequestPOST(EntityGenericUtil.getToken(),
+					RequestBodyGenerator.geradorRequestMockadaPorcentagemInvalida(),
+					UrlUtils.getUrlReducaoRecuperacao(), 200);
+			assertTrue(validador.validarBodyRequest(response));
+			validador.validarDadosBanco(response);
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Test
 	public void ReducaoModoRecuperacaoPorcentagemNaoInformada() {
-		Response response = 
-		request.genericRequestPOST(EntityGenericUtil.getToken(),
-				RequestBodyGenerator.geradorRequestMockadaPorcentagemNaoInformada(),
-				UrlUtils.getUrlReducaoRecuperacao(), 200);
-		assertTrue(validador.validarBodyRequest(response));
+
+		try {
+			Response response = request.genericRequestPOST(EntityGenericUtil.getToken(),
+					RequestBodyGenerator.geradorRequestMockadaPorcentagemNaoInformada(),
+					UrlUtils.getUrlReducaoRecuperacao(), 200);
+			assertTrue(validador.validarBodyRequest(response));
+			validador.validarDadosBanco(response);
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

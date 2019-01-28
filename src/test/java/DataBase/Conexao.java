@@ -5,10 +5,40 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-public class TestMySQL {
+public class Conexao {
 	//Propriedade prop;
 
-	public static void main(String[] args) {
+	
+	public static  String sql;
+	   
+	public static  String server = "10.60.30.23";
+	public static  String port = "1433";               
+	public static  String database = "Valhalla";
+
+      // Configuracao dos parametros de autenticacao
+	public static  String user = "UserValhalla";
+	public static String passwd = "UserValhalla";
+	
+	public String getUrl() {
+		return url;
+	}
+
+	public String getDriver() {
+		return driver;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
+	public void setDriver(String driver) {
+		this.driver = driver;
+	}
+
+	public String url = "jdbc:sqlserver://" + server + ":" + port + ";database=" + database;
+    public String driver = "com.microsoft.sqlserver.jdbc.SQLServerDataSource";
+	
+/*	public static void main(String[] args) {
         String sql;
    
         String server = "10.60.30.23";
@@ -32,7 +62,7 @@ public class TestMySQL {
             Statement stmt = con.createStatement();
 
             // Exemplo: navegando e exibindo os dados
-            sql = "SELECT TOP 10 * FROM baseDados  ";
+            sql = Queries.BUSCAR_DADOS_REDUCAO;
 
             // Executa-se a consulta dos campos 
             ResultSet res = stmt.executeQuery(sql);
@@ -54,5 +84,5 @@ public class TestMySQL {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
+    }*/
 }

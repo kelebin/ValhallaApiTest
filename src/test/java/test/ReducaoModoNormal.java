@@ -2,6 +2,8 @@ package test;
 
 import static org.junit.Assert.assertTrue;
 
+import java.sql.SQLException;
+
 import org.junit.Test;
 
 import Utils.EntityGenericUtil;
@@ -18,16 +20,28 @@ public class ReducaoModoNormal extends UrlUtils {
 
 	@Test
 	public void ReducaoModoNormalTeste() {
-		Response response = request.genericRequestPOST(EntityGenericUtil.getToken(),
-				RequestBodyGenerator.gerarMassaDados(), UrlUtils.getUrlReducaoNormal(), 200);
-		assertTrue(validador.validarBodyRequest(response));
+
+		try {
+			Response response = request.genericRequestPOST(EntityGenericUtil.getToken(),
+					RequestBodyGenerator.gerarMassaDados(), UrlUtils.getUrlReducaoNormal(), 200);
+			assertTrue(validador.validarBodyRequest(response));
+			validador.validarDadosBanco(response);
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Test
 	public void ReducaoModoNormalTestListaVazia() {
-		Response response = request.genericRequestPOST(EntityGenericUtil.getToken(),
-				RequestBodyGenerator.geradorDadosListaVazia(), UrlUtils.getUrlReducaoNormal(), 200);
-		assertTrue(validador.validarBodyRequest(response));
+
+		try {
+			Response response = request.genericRequestPOST(EntityGenericUtil.getToken(),
+					RequestBodyGenerator.geradorDadosListaVazia(), UrlUtils.getUrlReducaoNormal(), 200);
+			assertTrue(validador.validarBodyRequest(response));
+			validador.validarDadosBanco(response);
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Test
@@ -39,7 +53,7 @@ public class ReducaoModoNormal extends UrlUtils {
 	@Test
 	public void ReducaoModoNormalBodyVazio() {
 		request.genericRequestPOST(EntityGenericUtil.getToken(), RequestBodyGenerator.gerarBodyVazio(),
-				UrlUtils.getUrlReducaoNormal(), 500);
+				UrlUtils.getUrlReducaoNormal(), 400);
 	}
 
 	@Test

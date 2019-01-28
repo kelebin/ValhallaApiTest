@@ -2,6 +2,8 @@ package test;
 
 import static org.junit.Assert.assertTrue;
 
+import java.sql.SQLException;
+
 import org.junit.Test;
 
 import Utils.EntityGenericUtil;
@@ -19,10 +21,18 @@ public class ReducaoModoExtremo {
 
 	@Test
 	public void ReducaoModoExtremoTeste() {
-		Response response = 
-		request.genericRequestPOST(EntityGenericUtil.getToken(), RequestBodyGenerator.gerarMassaDados(),
-				UrlUtils.getUrlReducaoExtrema(), 200);
-		assertTrue(validador.validarBodyRequest(response));
+		
+		try {
+			Response response = 
+			request.genericRequestPOST(EntityGenericUtil.getToken(), RequestBodyGenerator.gerarMassaDados(),
+			UrlUtils.getUrlReducaoExtrema(), 200);
+			assertTrue(validador.validarBodyRequest(response));
+			validador.validarDadosBanco(response);
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 
 	@Test
@@ -40,7 +50,7 @@ public class ReducaoModoExtremo {
 	@Test
 	public void ReducaoModoExtremoBodyVazio() {
 		request.genericRequestPOST(EntityGenericUtil.getToken(), RequestBodyGenerator.gerarBodyVazio(),
-				UrlUtils.getUrlReducaoExtrema(), 500);
+				UrlUtils.getUrlReducaoExtrema(), 400);
 	}
 
 	@Test
