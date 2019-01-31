@@ -20,8 +20,8 @@ public class validador extends Conexao {
 		Map<String, String> jsonResponse = response.jsonPath().getMap("$");
 
 		boolean resultado = jsonResponse.get("servidor").equals("10.60.30.23")
-				|| jsonResponse.get("banco").equals("Valhalla") == true
-				|| jsonResponse.get("situacao").equals("Agendado") == true;
+				&& jsonResponse.get("banco").equals("Valhalla") == true
+				&& jsonResponse.get("situacao").equals("Agendado") == true;
 		return resultado;
 	}
 

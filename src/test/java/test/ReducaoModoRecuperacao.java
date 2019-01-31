@@ -41,7 +41,6 @@ public class ReducaoModoRecuperacao {
 			assertTrue(validador.validarBodyRequest(response));
 			validador.validarDadosBanco(response);
 		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -55,7 +54,6 @@ public class ReducaoModoRecuperacao {
 			assertTrue(validador.validarBodyRequest(response));
 			validador.validarDadosBanco(response);
 		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -76,7 +74,6 @@ public class ReducaoModoRecuperacao {
 			assertTrue(validador.validarBodyRequest(response));
 			validador.validarDadosBanco(response);
 		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -91,7 +88,6 @@ public class ReducaoModoRecuperacao {
 			assertTrue(validador.validarBodyRequest(response));
 			validador.validarDadosBanco(response);
 		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
