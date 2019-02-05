@@ -9,6 +9,7 @@ import org.junit.Test;
 import Utils.EntityGenericUtil;
 import Utils.RequestBodyGenerator;
 import Utils.RequestGenerator;
+import Utils.TiposStatus;
 import Utils.UrlUtils;
 import io.restassured.response.Response;
 import validacao.validador;
@@ -25,11 +26,10 @@ public class ReducaoModoExtremo {
 		try {
 			Response response = 
 			request.genericRequestPOST(EntityGenericUtil.getToken(), RequestBodyGenerator.gerarMassaDados(),
-			UrlUtils.getUrlReducaoExtrema(), 200);
+			UrlUtils.getUrlReducaoExtrema(), TiposStatus.OK.getCodigo());
 			assertTrue(validador.validarBodyRequest(response));
 			validador.validarDadosBanco(response);
 		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -38,30 +38,30 @@ public class ReducaoModoExtremo {
 	@Test
 	public void ReducaoModoExtremoTestListaVazia() {
 		request.genericRequestPOST(EntityGenericUtil.getToken(), RequestBodyGenerator.geradorDadosListaVazia(),
-				UrlUtils.getUrlReducaoExtrema(), 500);
+				UrlUtils.getUrlReducaoExtrema(), TiposStatus.InternalError.getCodigo());
 	}
 
 	@Test
 	public void ReducaoModoExtremoTestListaString() {
 		request.genericRequestPOST(EntityGenericUtil.getToken(),
-				RequestBodyGenerator.geradorRequestMockadaListaString(), UrlUtils.getUrlReducaoExtrema(), 400);
+				RequestBodyGenerator.geradorRequestMockadaListaString(), UrlUtils.getUrlReducaoExtrema(), TiposStatus.BadRequest.getCodigo());
 	}
 
 	@Test
 	public void ReducaoModoExtremoBodyVazio() {
 		request.genericRequestPOST(EntityGenericUtil.getToken(), RequestBodyGenerator.gerarBodyVazio(),
-				UrlUtils.getUrlReducaoExtrema(), 400);
+				UrlUtils.getUrlReducaoExtrema(), TiposStatus.BadRequest.getCodigo());
 	}
 
 	@Test
 	public void ReducaoModoExtremoPorcentagemInvalida() {
 		request.genericRequestPOST(EntityGenericUtil.getToken(),
-				RequestBodyGenerator.geradorRequestMockadaPorcentagemInvalida(), UrlUtils.getUrlReducaoExtrema(), 400);
+				RequestBodyGenerator.geradorRequestMockadaPorcentagemInvalida(), UrlUtils.getUrlReducaoExtrema(), TiposStatus.BadRequest.getCodigo());
 	}
 	
 	@Test
 	public void ReducaoModoExtremoPorcentagemNaoInformada() {
 		request.genericRequestPOST(EntityGenericUtil.getToken(),
-				RequestBodyGenerator.geradorRequestMockadaPorcentagemNaoInformada(), UrlUtils.getUrlReducaoExtrema(), 400);
+				RequestBodyGenerator.geradorRequestMockadaPorcentagemNaoInformada(), UrlUtils.getUrlReducaoExtrema(), TiposStatus.BadRequest.getCodigo());
 	}
 }

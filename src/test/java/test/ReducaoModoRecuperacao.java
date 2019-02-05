@@ -9,6 +9,7 @@ import org.junit.Test;
 import Utils.EntityGenericUtil;
 import Utils.RequestBodyGenerator;
 import Utils.RequestGenerator;
+import Utils.TiposStatus;
 import Utils.UrlUtils;
 import io.restassured.response.Response;
 import validacao.validador;
@@ -24,7 +25,7 @@ public class ReducaoModoRecuperacao {
 
 		try {
 			Response response = request.genericRequestPOST(EntityGenericUtil.getToken(),
-					RequestBodyGenerator.gerarMassaDados(), UrlUtils.getUrlReducaoRecuperacao(), 200);
+					RequestBodyGenerator.gerarMassaDados(), UrlUtils.getUrlReducaoRecuperacao(), TiposStatus.OK.getCodigo());
 			assertTrue(validador.validarBodyRequest(response));
 			validador.validarDadosBanco(response);
 		} catch (ClassNotFoundException | SQLException e) {
@@ -37,7 +38,7 @@ public class ReducaoModoRecuperacao {
 
 		try {
 			Response response = request.genericRequestPOST(EntityGenericUtil.getToken(),
-					RequestBodyGenerator.geradorDadosListaVazia(), UrlUtils.getUrlReducaoRecuperacao(), 200);
+					RequestBodyGenerator.geradorDadosListaVazia(), UrlUtils.getUrlReducaoRecuperacao(), TiposStatus.OK.getCodigo());
 			assertTrue(validador.validarBodyRequest(response));
 			validador.validarDadosBanco(response);
 		} catch (ClassNotFoundException | SQLException e) {
@@ -50,7 +51,7 @@ public class ReducaoModoRecuperacao {
 
 		try {
 			Response response = request.genericRequestPOST(EntityGenericUtil.getToken(),
-					RequestBodyGenerator.geradorRequestMockadaListaString(), UrlUtils.getUrlReducaoRecuperacao(), 200);
+					RequestBodyGenerator.geradorRequestMockadaListaString(), UrlUtils.getUrlReducaoRecuperacao(), TiposStatus.OK.getCodigo());
 			assertTrue(validador.validarBodyRequest(response));
 			validador.validarDadosBanco(response);
 		} catch (ClassNotFoundException | SQLException e) {
@@ -61,7 +62,7 @@ public class ReducaoModoRecuperacao {
 	@Test
 	public void ReducaoModoRecuperacaoBodyVazio() {
 		request.genericRequestPOST(EntityGenericUtil.getToken(), RequestBodyGenerator.gerarBodyVazio(),
-				UrlUtils.getUrlReducaoRecuperacao(), 400);
+				UrlUtils.getUrlReducaoRecuperacao(), TiposStatus.BadRequest.getCodigo());
 	}
 
 	@Test
@@ -70,7 +71,7 @@ public class ReducaoModoRecuperacao {
 		try {
 			Response response = request.genericRequestPOST(EntityGenericUtil.getToken(),
 					RequestBodyGenerator.geradorRequestMockadaPorcentagemInvalida(),
-					UrlUtils.getUrlReducaoRecuperacao(), 200);
+					UrlUtils.getUrlReducaoRecuperacao(), TiposStatus.OK.getCodigo());
 			assertTrue(validador.validarBodyRequest(response));
 			validador.validarDadosBanco(response);
 		} catch (ClassNotFoundException | SQLException e) {
@@ -84,7 +85,7 @@ public class ReducaoModoRecuperacao {
 		try {
 			Response response = request.genericRequestPOST(EntityGenericUtil.getToken(),
 					RequestBodyGenerator.geradorRequestMockadaPorcentagemNaoInformada(),
-					UrlUtils.getUrlReducaoRecuperacao(), 200);
+					UrlUtils.getUrlReducaoRecuperacao(), TiposStatus.OK.getCodigo());
 			assertTrue(validador.validarBodyRequest(response));
 			validador.validarDadosBanco(response);
 		} catch (ClassNotFoundException | SQLException e) {
