@@ -18,7 +18,7 @@ public class RequestGenerator {
 	
 	  RestAssured.defaultParser = Parser.JSON;	
 	  
-	  return   			  RestAssured.      
+	  return   			 RestAssured.
 	    		         given()
 	    		         	  .header(accessToken, token)
 	    		         	  .relaxedHTTPSValidation()
